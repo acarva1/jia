@@ -1,0 +1,12 @@
+<h2>Reset Password</h2>
+Enter your email to start the process of resetting your password.<br /><br />
+<div id="eventForm">
+<form action="./password_reset.php" method="post">
+    <?php
+    createInput('email', 'text', $reset_errors, 'Email: ');    
+    ?>
+    <br /><br />
+    <input type="submit" value="Submit">
+    
+    </form>
+</div>

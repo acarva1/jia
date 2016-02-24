@@ -1,0 +1,58 @@
+<h2>Edit Venue</h2>
+Edit any of the fields below then click 'Save'.<br>Don't select a new picture to keep the current one, or check 'No Picture' to delete it.
+<br /><br />
+
+<div id="eventForm">
+<form action="./editvenue.php?id=<?php echo $_GET['id']; ?>" method="post" enctype="multipart/form-data">
+    <?php
+    //name input
+    createInput('name', 'text', $venue_errors, 'Name: ', 'EDIT');
+    echo '<br />';
+    //desc input
+    createInput('desc', 'textarea', $venue_errors, 'Description (Optional): ', 'EDIT');
+    echo '<br />';
+    //pic input
+    echo '<label for="pic">Choose a New Picture (Optional): </label>';
+    if (array_key_exists('pic', $venue_errors)) {
+        echo '<span class="error">' . $venue_errors['pic'] . '</span><br>';
+    }
+    //echo '<input type="hidden" name="MAX_FILE_SIZE" value="30000" />';
+    echo '<input type="file" name="pic" id="pic"/>';
+    if (isset($_SESSION['profpicname'])) {
+        echo "<br />Currently '{$_SESSION['profpicname']}'";
+    }
+    echo '<br />';
+    echo '<label for="noPic">No Picture: </label>';
+    echo '<input type="checkbox" name="noPic" id="noPic" />'; //check to not use a picture
+    echo '<br /><br/>';
+    //links input
+    echo 'Additional Links (Optional): ';
+    echo '<div id="linksDiv">';
+    //create an entry for all sticky items
+    if (isset($_POST['links'])) { //true if values are present in post.
+        for ($i=0; $i<count($_POST['links']); $i++) {
+            echo '<div class="memberDiv">';
+            createInput('links['.$i.']', 'text', $venue_errors, 'URL: ', null, array('value'=>$_POST['links'][$i]));
+            createInput('title['.$i.']', 'text', $venue_errors, 'Short Description: ', null, array('value'=>$_POST['title'][$i]));
+            echo '<button class="linkDel" type="button">Remove</button>';
+            echo '</div>';
+        }
+    }else{ //using links from DB
+        for ($i=0; $i<count($linkURL); $i++) {
+            echo '<div class="memberDiv">';
+            createInput('links['.$i.']', 'text', $venue_errors, 'URL: ', null, array('value'=>$linkURL[$i]));
+            createInput('title['.$i.']', 'text', $venue_errors, 'Short Description: ', null, array('value'=>$linkName[$i]));
+            echo '<button class="linkDel" type="button">Remove</button>';
+            echo '</div>';
+        }
+    }
+    echo '</div>';
+    echo '<button id="addLink" type="button">Add A Link</button>';
+    echo '<br /><br />';
+    echo '<input type="submit" value="Save">';
+    echo '<button id="cancelButton" type="button">Cancel</button>'; 
+    ?>
+    </form>
+</div>
+<script type="application/javascript" src="./js/addprofile.js"></script>
+<script type="application/javascript" src="./js/cancel.js"></script>

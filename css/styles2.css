@@ -1,0 +1,649 @@
+/************************************************Resets************************************************/
+
+html, body, div, h1, p, ul {
+    font-family: "Raleway", Arial, sans-serif;
+    line-height: 1.6em;
+    margin: 0;
+    padding: 0;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    position: relative;
+    border: none;
+}
+ul {
+    list-style-type: none;
+}
+a {
+    color: teal;
+}
+/************************************************Sitewide************************************************/
+.userAction {
+    background-color: #222;
+    background: linear-gradient(to bottom, #444, #111);
+}
+.bodyDiv {
+    background-color: white;
+    margin-top: 0;
+    margin-bottom: 200px;
+    padding: 20px 200px;
+}
+.bodyDiv h2:first-of-type {
+    margin-top: 0;
+}
+.padToView {
+    padding-left: 200px;
+    padding-right: 200px;
+}
+.opaqueBG {
+    background-color: white;
+}
+.footerMargin {
+    margin-bottom: 200px;
+    padding-bottom: 20px;
+}
+/************************************************Header************************************************/
+.outerBorder, .footerDiv {
+    width: 100%;
+    display: block;
+    text-align: center;
+}
+.outerBorder > * {
+    text-align: left;
+}
+.outerBorder {
+    margin: auto;
+    margin-bottom: 200px;
+}
+.header {
+    display: block;
+    width: 100%;
+    height: 9em;
+    background: linear-gradient(to bottom, black, navy);
+    background-color: #113;
+}
+.titleDiv a {
+    color: whitesmoke;
+}
+.titleDiv {
+    display: inline-block;
+    padding-left: 1em;
+    color: #efefe7;
+}
+.logo {
+    padding-top: 10px;
+}
+.logo, .logo * {
+    display: inline-block;
+}
+.logo h1 {
+    float: left;
+    font-size: 5.5em;
+    line-height: 1em;
+}
+.logo p {
+    font-size: 2em;
+    float: right;
+    color: rgba(255, 255, 255, 0.6);
+}
+.caption {
+    text-align: center;
+    font-size: 0.9em;
+    font-style: italic;
+    letter-spacing: 3px;
+}
+
+/************************************************Log In************************************************/
+.loginDiv {
+    padding: 5px 10px 0 10px;
+    position: absolute;
+    bottom: 0;
+    right: 200px;
+    height: 9em;
+    background-color: #D3E1E6;
+    text-align: right;
+}
+.loginDiv input {
+    color: teal;
+}
+.email, .password, .utilities, .loginDiv #login {
+    padding: 3px;
+    color: white;
+    border: none;
+    background: none;
+}
+.utilities {
+    margin-bottom: 5px;
+}
+.utilities input {
+    text-decoration: underline;
+}
+/************************************************Main Nav************************************************/
+.navbar-container {
+    background-color: #cc4545;
+}
+.navbar-container ul {
+    width: 100%;
+    border-collapse: collapse;
+}
+.nav li {
+    list-style-type: none;
+    display: table-cell;
+    width: 20%;
+    border-right: thin solid white;
+    border-left: thin solid white;
+    vertical-align: middle;
+}
+.nav a {
+    display: block;
+    padding: 15px 5px;
+}
+.nav a:hover {
+    color: yellow;
+}
+.nav {
+    width: 100%;
+    display: table;
+    table-layout: fixed;
+    text-align: center;
+}
+
+
+/************************************************Footer************************************************/
+.footerDiv {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: -10;
+    height: 150px;
+    padding: 20px 0;
+    margin-top: 200px;
+    background-color: #555;
+    color: #ddd;
+    font-size: small;
+    font-style: italic;
+}
+
+/************************************************Welcome************************************************/
+.welcome {
+    display: block;
+    text-align: center;
+    width: 100%;
+}
+.splashWide, .splashNarrow, .whatis, .question {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+}
+.splashWide, .splashNarrow {
+    height: 400px;
+    padding: 150px;
+    background: url("../images/congress-ave-webres.jpg");
+    background-position: center center;
+    background-attachment: fixed;
+    color: white;
+}
+.splashWide h1, .splashNarrow h1 {
+    font-size: 4em;
+    height: 600px;
+}
+.splashNarrow {
+    display: none;
+}
+.whatis {
+    background-color: white;
+}
+.question {
+    min-height: 200px;
+    padding: 80px;
+    background-color: #f5f5f5;
+}
+.question:nth-child(2) {
+    background-color: white;
+}
+.question em {
+    font-style: normal;
+    color: red;
+}
+
+/************************************************Calendar/Events************************************************/
+#cal {
+    display: block;
+    width: 100%;
+    background-color: white;
+}
+.calHeader {
+    text-align: center;
+    font-size: 2em;
+    padding: 2em 0;
+    background: url("../images/paramount-webres.jpg");
+    background-position: center center;
+    background-attachment: fixed;
+    color: whitesmoke;
+}
+.calendarDiv {
+    display: block;
+    text-align: center;
+    padding: 5px 0px;
+    margin-top: 10px;
+    color: white;
+    color: #222;
+}
+#calendarHeading {
+    margin-left: 15px;
+    margin-right: 15px;
+    min-width: 80px;
+    display: inline-block;
+    font-weight: bold;
+}
+.calendarDiv table {
+    margin: 0 auto;
+    width: 300px;
+    height: 200px;
+    border-collapse: collapse;
+}
+.calendarDiv td {
+    width: 35px;
+    margin: 2px;
+    vertical-align: middle;
+}
+.calendarDiv td a {
+    display: block;
+    height: 100%;
+    width: 100%;
+}
+.calendarInput {
+    margin-left: 10px;
+}
+.tablecell-day {
+    background-color: #D9D0C3;
+}
+.tablecell-today {
+    background-color: #D9C3D7;
+}
+.tablecell-selected {
+    background-color: #e9d3f7;
+}
+.eventDivWrapper {
+    width: 33.3%;
+    display: inline-block;
+    vertical-align: text-top;
+    /*margin-top: 4px;*/
+}
+.eventDiv {
+    margin: 2px;
+    padding: 5px;
+    text-align: left;
+    background-color: #B4C8ED;
+    height: 100%;
+}
+.eventDiv h2 {
+    text-align: center;
+}
+.eventContent {
+    padding-bottom: 15px;
+}
+.eventContent ul {
+    padding: 0;
+    position: relative;
+}
+.eventContent li:not(:last-child) {
+    border-bottom: 1px solid black;
+    padding-bottom: 8px;
+    margin-bottom: 8px;
+}
+.eventContent li {
+    display: block;
+    list-style-type: none;
+    padding-left: 40px;
+}
+.eventContent li::before {
+    display: block;
+    width: 20px;
+    position: absolute;
+    left: 15px;
+    content: "\25CF";
+}
+.eventDivOdd {
+    background-color: #C7D0ED;
+}
+.eventDivNow {
+    background-color: #d9c3d7;
+}
+
+
+/************************************************Event Details************************************************/
+.event {
+    background-color: white;
+    padding-top: 15px;
+}
+.event h2 {
+    margin: 0;
+}
+#eventDisplayDiv {
+    width: 100%;
+    display: block;
+    /*
+    display: flex;
+    display: -webkit-flex;
+    flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;*/
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 11px;
+    margin-bottom: 11px;
+}
+#menuToggle {
+    display: none;
+}
+.menuVisibility {
+    display: table;
+}
+.displayControlDiv {
+    text-align: center;
+    margin: 10px 0;
+    clear: both;
+}
+.error {
+    border: 1px solid red;
+}
+.error:not(input):not(textarea) {
+    color: red;
+    margin-right: 5px;
+}
+#registerForm {
+    border: 1px solid lightgrey;
+    margin: 5px;
+    padding: 5px;
+}
+#registerForm input {
+    display: block;
+    margin-left: 20px;
+}
+#registerForm .formEleDiv {
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+#eventForm {
+    border: 1px solid lightgrey;
+    margin: 5px;
+    padding: 5px;
+}
+#eventForm input, textarea {
+    margin: 5px;
+}
+.formEleDiv {
+    display: inline-block;
+    word-break: keep-all;
+}
+.formEleDivText {
+    margin-right: 10px;
+}
+textarea {
+    resize: none;
+    width: 75%;
+    height: 80px;
+    box-sizing: border-box;
+}
+#bandDiv {
+    border: 1px solid lightgrey;
+    padding: 5px;
+    margin: 5px;
+    display: table;
+}
+#linksDiv {
+    border: 1px solid lightgrey;
+    padding: 5px;
+    margin: 5px;
+    display: table;
+}
+.eventDetails {
+    font-style: italic;
+    font-size: small;
+}
+.eventViewList {
+    list-style-type: none;
+    padding-bottom: 30px;
+}
+.eventViewList > li:nth-child(even) {
+    background-color: #B4C8ED;
+}
+.eventViewList > li:nth-child(odd) {
+    background-color: #C7D0ED;
+}
+.eventViewList > li {
+    padding: 8px;
+}
+.centeredDiv {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid lightgrey;
+    text-align: center;
+    max-width: 700px;
+    padding: 10px;
+}
+#cancelButton {
+    margin-left: 15px;
+    margin-top: 20px;
+}
+.profileViewList {
+    background-color: #e4edf0;
+    border: 1px solid #bfcacf;
+    border-radius: 2px;
+    padding: 6px;
+}
+.profileViewList dt {
+    font-weight: 600;
+}
+.profileViewList dd {
+    background-color: #F0F4F5;
+    display: inline-block;
+    min-width: 30%;
+    padding: 3px 9px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    border: 1px solid #d8dbdc;
+    border-radius: 5px;
+}
+.profilePic, .venueViewPic {
+    max-width: 100%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border: 6px solid lightgrey;
+    border-radius: 6px;
+}
+.profileViewDiv h2 {
+    text-align: center;
+}
+.profileInstrWrapper {
+    display: inline-block;
+    width: 33.33%;
+}
+.venueList {
+    background-color: white;
+}
+.venuePicSmall {
+    max-width: 200px;
+    max-height: 200px;
+    width: auto;
+    height: auto;
+    display: block;
+    float: left;
+    border: 6px solid lightgrey;
+    border-radius: 6px;
+    margin-right: 10px;
+}
+.venueDiv {
+    clear: both;
+    background-color: #e4edf0;
+    border: 1px solid #bfcacf;
+    border-radius: 2px;
+    padding: 6px;
+    display: inline-block;
+    box-sizing: padding-box;
+    margin-bottom: 10px;
+}
+#venuesDiv {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 200px;
+}
+.venueViewDesc {
+    margin-top: 10px;
+}
+.venueViewEventsDiv > ul > li {
+    padding: 5px;
+}
+.venueViewEventsDiv > ul > li:nth-of-type(2n){
+    background-color: #C7D0ED;
+}
+.venueViewEventsDiv > ul > li:nth-of-type(2n+1){
+    background-color: #B4C8ED;
+}
+.accountEventsDiv {
+    background-color: #e4edf0;
+    border: 1px solid #bfcacf;
+    border-radius: 2px;
+    padding: 6px;
+    display: inline-block;
+    vertical-align: top;
+    margin: 5px;
+}
+.accountEventsDiv td {
+    padding: 5px;
+}
+.accountEventsDiv tr {
+    background-color: #F0F4F5;
+    border: 1px solid #d8dbdc;
+    border-radius: 5px;
+}
+.accountProfileDiv {
+    background-color: #e4edf0;
+    border: 1px solid #bfcacf;
+    border-radius: 2px;
+    padding: 6px;
+    display: inline-block;
+    vertical-align: top;
+    margin: 5px;
+}
+.accountProfileDiv ul {
+    background-color: #F0F4F5;
+    border: 1px solid #d8dbdc;
+    border-radius: 5px;
+}
+.accountProfileDiv li {
+    margin-top: 6px;
+    margin-bottom: 6px;
+    margin-right: 6px;
+}
+#autoNameDiv {
+    background-color: whitesmoke;
+    border: 1px solid grey;
+    padding: 3px;
+}
+.autoNameSpan {
+    display: block;
+}
+.autoNameSpanSel {
+    background-color: #9CE8FF;
+}
+.fb-like {
+    margin-left: 6%;
+    height: 20px;
+}
+.fb-share-button {
+    line-height: 20px;
+    margin-left: 10px;
+}
+
+/************************************************Media Queries************************************************/
+@media all and (max-width: 1130px) {
+    .padToView {
+        padding-left: 0;
+        padding-right: 0;
+        width: 100%;
+    }
+    .bodyDiv {
+        margin: 0;
+        padding: 20px 0 20px 0;
+    }
+    .splashWide {
+        display: none;
+    }
+    .splashNarrow {
+        padding: 100px 50px 0 50px;
+        display: inline-block;
+    }
+    .loginDiv {
+        right: 0;
+    }
+    .nav li:first-of-type {
+        border-left: none;
+    }
+    .nav li:last-of-type {
+        border-right: none;
+    }
+}
+@media all and (max-width: 850px) and  (min-width: 631px) {
+    .eventDivWrapper {
+        width: 50%;
+    }
+}
+@media all and (max-width: 680px) {
+    .header {
+        text-align: center;
+    }
+    .logo p {
+        padding-top: 0.5em;
+        font-size: 1em;
+    }
+    .caption {
+        letter-spacing: inherit
+    }
+    .loginDiv {
+        display: none;
+    }
+    .splashNarrow {
+        font-size: 0.85em;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    #menuToggle {
+        display: block;
+        text-align: center;
+        font-size: 25px;
+        font-family: sans-serif;
+        color: whitesmoke;
+    }
+    .menuVisibility {
+        display: none !important;
+    }
+    #calendarDiv {
+        display: none;
+    }
+    .eventDivWrapper {
+        width: 100%;
+    }
+    .calendarInput {
+        display: none;
+    }
+    .question {
+        padding: 50px;
+    }
+    .memberDiv {
+        border: 1px solid lightgrey;
+    }
+    textarea {
+        width: 100%;
+    }
+    .profileViewList dd {
+        display: block;
+    }
+}
+@media all and (max-width: 390px) {
+    .splashNarrow {
+        font-size: 0.65em;
+    }
+}

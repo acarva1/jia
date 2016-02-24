@@ -1,0 +1,58 @@
+<div class="welcome">
+    <div class="splashWide">
+        <h1>Welcome to Jazz in Austin</h1>
+    </div>
+    <div class="splashNarrow">
+        <h1>Welcome to<br />
+            Jazz in Austin</h1>
+    </div>
+    <div class="whatis padToView">
+        <div class="question">
+            <h2>What is Jazz in Austin?</h2>
+
+            <p>A place where Austin jazz musicians can post where and when they'll be performing, and where jazz lovers can always find what shows are happening in the Capitol City</p>
+        </div>
+        <div class="question">
+            <h2>How does it work?</h2>
+
+            <p><em>View shows and concerts</em> by day from the <a href="./index.php#cal">Calendar</a></p>
+            <p><em>Learn about Austin's artists</em> at the <a href="./profiles.php">Musician Profiles</a> page</p>
+            <p><em>Discover jazz hot spots</em> on the <a href="./venues.php">Venues</a> page</p>
+        </div>
+        <div class="question">
+            <h2>How do I sign up?</h2>
+
+            <p>Musicians and promoters who have <a href="./register.php">registered an account</a> can log in and create and create events, make a personal profile page, add a bio and manage their upcoming shows
+        </div>
+    </div>
+</div>
+
+<div id="cal">
+    <div class="calHeader">
+        <h1>Calendar</h1>
+    </div>
+    <script type="application/javascript" src="./js/calendar.js"></script>
+    <div class="calendarDiv">
+        <a href="#" id="calendarLeft">&#10094;</a>
+        <span id="calendarHeading"></span>
+        <a href="#" id="calendarRight">&#10095; </a>
+        <table id="calendarTable">
+        </table>
+    </div>
+
+    <div class="displayControlDiv">
+        <label for="numDaysSelect">Show </label>
+        <select id="numDaysSelect">
+            <option value="7">7</option>
+            <option value="15">15</option>
+            <option value="31">31</option>
+        </select> Days
+        <br>
+    </div>
+
+    <div id="eventDisplayDiv">
+    </div>
+
+    <div class="displayControlDiv">
+    </div>
+</div>

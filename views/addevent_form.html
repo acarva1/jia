@@ -1,0 +1,82 @@
+<script type="application/javascript" src="./js/addevent.js"></script>
+<span id="nameListJSON" style="display:none;"><?php echo isset($nameList)?$nameList:''; ?></span>
+<div class="bodyDiv">
+    <h2>Add New Event</h2>
+    Fill out the form below to create a new event. You should only add events for gigs that are open
+     to the public.<br />
+    If you want to copy the details from one of your previously created events to this one, check the box
+     then select that event's name from the drop-down menu.
+    <br /><br />
+    Copy from a previous event: <input type="checkbox" id="copyCheck"> <select id="copySelect" value="none" disabled>
+    <option value="none" selected>Select Title</option>
+    <?php
+    //print an option for each event title.
+    foreach ($r as $row) {
+        echo '<option value="'.$row['id'].'">'.$row['title'].'</option>';
+    }
+    ?>
+    </select>
+    <br /><br />
+    <div id="eventForm">
+    <form action="./addevent.php" method="post">
+        <?php
+
+        createInput('title', 'text', $event_errors, 'Title: ');
+        echo '<br />';
+        
+        createInput('venue', 'text', $event_errors, 'Venue: ');
+        echo '<br />';
+        
+        createInput('date', 'date', $event_errors, 'Date (MM/DD/YY): ', 'POST', array('size'=>8));
+        echo '<br />';
+        
+        createInput('startHour', 'text', $event_errors, 'Start Time: ', null, array('size'=>2,'maxlength'=>2, 'value'=>isset($_POST['startHour'])?$_POST['startHour']:6));
+        echo ':';
+        createInput('startMin', 'text', $event_errors, '', null, array('size'=>2,'maxlength'=>2,'value'=>isset($_POST['startMin'])?$_POST['startMin']:'00'));
+        //allow for sticky form
+        if (isset($_POST['startPeriod'])) {
+            echo '<select name="startPeriod" id="startPeriod"><option value="am">AM</option><option value="pm" '.($_POST['startPeriod']==='pm'?'selected':'').'>PM</option></select>';
+        }else{
+            echo '<select name="startPeriod" id="startPeriod"><option value="am">AM</option><option value="pm" selected>PM</option></select>';
+        }
+        echo '<br />';
+        
+        createInput('endHour', 'text', $event_errors, 'End Time: ', null, array('size'=>2,'maxlength'=>2,'value'=>isset($_POST['endHour'])?$_POST['endHour']:8));
+        echo ':';
+        createInput('endMin', 'text', $event_errors, '', null, array('size'=>2,'maxlength'=>2,'value'=>isset($_POST['endMin'])?$_POST['endMin']:'00'));
+        if (isset($_POST['endPeriod'])) {
+            echo '<select name="endPeriod" id="endPeriod"><option value="am">AM</option><option value="pm" '.($_POST['endPeriod']==='pm'?'selected':'').'>PM</option></select>';
+        }else{
+            echo '<select name="endPeriod" id="endPeriod"><option value="am">AM</option><option value="pm" selected>PM</option></select>';
+        }
+        echo '<br />';
+        
+        createInput('desc', 'textarea', $event_errors, 'Description (Optional): ');
+        echo '<br />';
+        
+        echo 'Band Members (Optional): ';
+        echo '<div id="bandDiv">';
+        //allow for sticky band forms
+        if (isset($_POST['band'])) {
+            for ($i=0; $i<count($_POST['band']); $i++) {
+                echo '<div class="memberDiv">';
+                createInput('band['.$i.']', 'text', $event_errors, 'Name: ', null, array('value'=>$_POST['band'][$i]));
+                createInput('instr['.$i.']', 'text', $event_errors, 'Instrument: ', null, array('value'=>$_POST['instr'][$i]));
+                echo '<button class="memberDel" type="button">Remove</button>';
+                echo '</div>';
+            }
+        }else{
+            echo '<div class="memberDiv">';
+            createInput('band[0]', 'text', $event_errors, 'Name: ', null, array('value'=>$_SESSION['name']));
+            createInput('instr[0]', 'text', $event_errors, 'Instrument: ', null, array('value'=>$instr));
+            echo '<button class="memberDel" type="button">Remove</button>';
+            echo '</div>';
+        }
+        echo '</div>';
+        echo '<button id="addMember" type="button">Add Band Member</button>';
+        echo '<br /><br />';
+        echo '<input type="submit" value="Submit">';
+    ?>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <?php if (!isset($pageDesc)): ?>
+    <meta name="description" content="Jazz in Austin is a place where Austin jazz musicians can post where and when they'll be performing, so that you'll always know what live jazz is happening here in Austin, Texas!" />
+    <?php else: ?>
+    <meta name="description" content="
+        <?php echo $pageDesc; ?>
+    " />
+    <?php endif ?>
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+    <title>
+    <?php
+        if (isset($pageTitle)) {
+            echo 'Jazz in Austin: '.$pageTitle;
+        }
+        else {
+            echo 'Jazz in Austin';
+        } 
+    ?>
+    </title>
+    <link href='https://fonts.googleapis.com/css?family=Raleway:400,800' rel='stylesheet' type='text/css' />
+    <link rel="stylesheet" type="text/css" href="./css/normalize.css" media="all"/>
+    <link rel="stylesheet" type="text/css" href="./css/styles2.css?
+        <?php echo filemtime('./css/styles2.css');?>
+    " media="all" />
+    <script type="application/javascript" src="./js/menu.js"></script>
+</head> 
+<body>
+    <div class="outerBorder">
+        <div class="contentDiv">
+            <div class="header padToView">
+                <div class="titleDiv">
+                    <div class="logo">
+                        <a href="./index.php">
+                            <h1>JIA</h1>
+                            <p>Jazz In Austin</p>
+                        </a>
+                    </div>
+                    <div class="caption">A Guide to Live Jazz in Austin, Texas</div>
+                </div>
+                <div class="loginDiv userAction">
+                    <?php if (empty($_SESSION['id'])) { ?>
+                    <form action="" method="post">
+                        <div class="email">
+                            <label for="email">Email: </label>
+                            <input type="text" id="email" class="loginInput" name="login[email]" value="
+                            <?php 
+                                if (isset($loginEmail)) {
+                                    echo $loginEmail
+                                ;} 
+                            ?>
+                            "/>
+                        </div>
+                        <div class="password">
+                            <label for="password">Password: </label>
+                            <input type="password" id="password" class="loginInput" name="login[pass]"/>
+                            <?php 
+                                if (isset($loginError) && $loginError === true) {
+                                    echo '<span class="error">Invalid Email or Password</span><br />';
+                                } 
+                            ?>
+                        </div>
+                        <div class="utilities">
+                            <a href="./password_reset.php" title="Forgot your password?">Forgot?</a>
+                            |
+                            <label for="remember">Remember Me</label>
+                            <input type="checkbox" name="login[remember]"/>
+                            |
+                            <input type="submit" id="login" value="Log-in" />
+                        </div>
+                    </form>
+                    <?php
+                        }
+                        else { 
+                        echo '<span>Welcome, ' . $_SESSION['name'] . '!</span>'; 
+                    ?>
+                    <div class="memberControls">
+                        <a href="myaccount.php">My Account</a> | 
+                        <a href="addevent.php">Add Event</a> | 
+                        <a href="logout.php">Log Out</a>
+                    </div>
+                    <?php
+                        } 
+                    ?>
+                    <script>(function(d, s, id) { //facebook like button
+                      var js, fjs = d.getElementsByTagName(s)[0];
+                      if (d.getElementById(id)) return;
+                      js = d.createElement(s); js.id = id;
+                      js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5";
+                      fjs.parentNode.insertBefore(js, fjs);
+                    }(document, 'script', 'facebook-jssdk'));</script>
+                <!--FACEBOOK-->
+                <div class="fb-like" data-href="http://jazzinaustin.com" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
+                </div>
+            </div>
+            <div class="navbar-container userAction padToView">
+                <span id="menuToggle">&#8801; Menu</span>
+                <ul class="nav menuVisibility">
+                    <li><a href="index.php#cal">Calendar / About</a></li>
+                    <li><a href="profiles.php">Musician Profiles</a></li>
+                    <li><a href="venues.php">Venues</a></li>
+                    <li><a href="booking.php">Booking</a></li>
+                    <?php
+                    //check if user is logged in
+                    if (isset($_SESSION['id']) && filter_var($_SESSION['id'], FILTER_VALIDATE_INT, array('min_range'=>1))) {
+                        ?>
+                    <li><a href="addevent.php">Add Event</a></li>
+                    <li class="nav-login"><a href="myaccount.php">My Account</a></li>
+                    <?php
+                    }else{ ?>
+                    <li class="nav-login"><a href="login.php">Login</a></li>
+                    <li><a href="register.php">Register</a></li>
+                    <?php } ?>
+                </ul>
+            </div>
+        <?php
+        if (basename($_SERVER['PHP_SELF']) != "login.php" && $pageTitle != "Calendar") {
+            echo '<div class="bodyDiv">';
+        }
+        ?>
+    <!--CONTENT-->
+</body>

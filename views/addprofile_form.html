@@ -1,0 +1,41 @@
+<script type="application/javascript" src="./js/addprofile.js"></script>
+<h2>Create Musician Profile</h2>
+Fill out the form below to create your musician profile.<br><br>
+
+<div id="eventForm">
+<form action="./addprofile.php" method="post" enctype="multipart/form-data">
+    <?php
+    createInput('bio', 'textarea', $profile_errors, 'Bio (Optional): ');
+    echo '<br />';
+    createInput('instr', 'select', $profile_errors, 'Primary Instrument: ');
+    echo '<br />';
+    //create pic input
+    echo '<label for="pic">Upload Your Photo (Optional): </label>';
+    if (array_key_exists('pic', $profile_errors)) {
+        echo '<span class="error">' . $profile_errors['pic'] . '</span><br>';
+    }
+    //echo '<input type="hidden" name="MAX_FILE_SIZE" value="30000" />';
+    echo '<input type="file" name="pic" id="pic" />';
+    if (isset($_SESSION['profpicname'])) {
+        echo "<br />Currently '{$_SESSION['profpicname']}'";
+    }
+    echo '<br />';
+    //create links input
+    echo 'Additional Links (Optional): ';
+    echo '<div id="linksDiv">';
+    //create an entry for all sticky items
+    $posted = isset($_POST['links']); //true if values are present in post.
+    for ($i=0; $i<($posted?count($_POST['links']):1); $i++) {
+        echo '<div class="memberDiv">';
+        createInput('links['.$i.']', 'text', $profile_errors, 'URL: ', null, array('value'=>($posted?$_POST['links'][$i]:'')));
+        createInput('title['.$i.']', 'text', $profile_errors, 'Short Description: ', null, array('value'=>($posted?$_POST['title'][$i]:'')));
+        echo '<button class="linkDel" type="button">Remove</button>';
+        echo '</div>';
+    }
+    echo '</div>';
+    echo '<button id="addLink" type="button">Add Another Link</button>';
+    echo '<br /><br />';
+    echo '<input type="submit" value="Submit">';
+    ?>
+    </form>
+</div>

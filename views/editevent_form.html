@@ -1,0 +1,77 @@
+<script type="application/javascript" src="./js/addevent.js"></script>
+<script type="application/javascript" src="./js/cancel.js"></script>
+<span id="nameListJSON" style="display:none;"><?php echo isset($nameList)?$nameList:''; ?></span><h2>Edit Event</h2>
+Edit any of the fields below then click 'Save'.
+<br /><br />
+
+<div id="eventForm">
+<form action="./editevent.php?id=<?php echo $_GET['id']; ?>" method="post">
+    <?php
+
+    createInput('title', 'text', $event_errors, 'Title: ', 'EDIT');
+    echo '<br />';
+    
+    createInput('venue', 'text', $event_errors, 'Venue: ', 'EDIT');
+    echo '<br />';
+    
+    createInput('date', 'date', $event_errors, 'Date (MM/DD/YY): ', 'EDIT', array('size'=>8));
+    echo '<br />';
+   
+    createInput('startHour', 'text', $event_errors, 'Start Time: ', 'EDIT', array('size'=>2,'maxlength'=>2));
+    echo ':';
+    createInput('startMin', 'text', $event_errors, '', 'EDIT', array('size'=>2,'maxlength'=>2));
+    echo '<select name="startPeriod" id="startPeriod"><option value="am">AM</option><option value="pm" '.($event['startPeriod']==='pm'?'selected':'').'>PM</option></select>';
+    echo '<br />';
+    
+    createInput('endHour', 'text', $event_errors, 'End Time: ', 'EDIT', array('size'=>2,'maxlength'=>2,'value'=>8));
+    echo ':';
+    createInput('endMin', 'text', $event_errors, '', 'EDIT', array('size'=>2,'maxlength'=>2,'value'=>'00'));
+    echo '<select name="endPeriod" id="endPeriod"><option value="am">AM</option><option value="pm" '.($event['endPeriod']==='pm'?'selected':'').'>PM</option></select>';
+    echo '<br />';
+    
+    createInput('desc', 'textarea', $event_errors, 'Description (Optional): ', 'EDIT');
+    echo '<br />';
+    
+    echo 'Band Members (Optional): ';
+    echo '<div id="bandDiv">';
+    
+    //get band members from DB or from POST
+    if (empty($_POST['band'])) {
+        $band = array();
+        $instr = array();
+        $bands = explode('|', $event['band']);
+        /*
+        foreach ($bands as $i=>$bi) {
+            list($b, $in) = (explode(',', $bi));
+            $band[$i] = $b;
+            $instr[$i] = $in;
+        }*/
+        if (!empty($bands[0])) {
+            for ($i=0; $i<count($bands); $i++) {
+
+                list($b, $in) = (explode(',', $bands[$i]));
+                $band[$i] = $b;
+                $instr[$i] = $in;
+            }
+        }
+    }else{
+        $band = $_POST['band'];
+        $instr = $_POST['instr'];
+    }
+    //create inputs
+    for ($i=0; $i<count($band); $i++) {
+        echo '<div class="memberDiv">';
+        createInput("band[$i]", 'text', $event_errors, 'Name: ', null, array('value'=>$band[$i]));
+        createInput("instr[$i]", 'text', $event_errors, 'Instrument: ', null, array('value'=>$instr[$i]));
+        echo '<button class="memberDel" type="button">Remove</button>';
+        echo '</div>';
+    }
+    
+    echo '</div>';
+    echo '<button id="addMember" type="button">Add Band Member</button>';
+    echo '<br /><br />';
+    echo '<input type="submit" value="Save Changes" />';
+    echo '<button id="cancelButton" type="button">Cancel</button>'; 
+?>
+    </form>
+</div>

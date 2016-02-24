@@ -1,0 +1,19 @@
+<h2>Change Password</h2>
+Fill out the form below to change your password.<br /><br />
+<div id="eventForm">
+<form action="./password.php" method="post">
+    <?php
+    //name input
+    createInput('curpass', 'password', $pw_errors, 'Current Password: ');
+    echo '<br /><br />';
+    createInput('pass1', 'password', $pw_errors, 'New Password: ');
+    echo '<br />';
+    createInput('pass2', 'password', $pw_errors, 'Confirm New Password: ');
+    echo '<br /><br />';
+    echo '<i>Your password must be at least 6 characters long and it must contain at least one lower-case letter, upper-case letter, and number.</i>';
+    ?>
+    <br /><br />
+    <input type="submit" value="Submit">
+    
+    </form>
+</div>

@@ -1,0 +1,29 @@
+    <h2>Venues</h2>
+    <?php
+    if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] === true) {
+        echo '<a href="./addvenue.php">Click here to add a new venue.</a><br /><br />';
+    }
+    ?>
+    <div id="venuesDiv">
+    <?php
+        
+        $descLength = 600;
+        //display each venue row
+    while ($row = $r->fetch(PDO::FETCH_ASSOC)) {
+        echo '<a href="./venues.php?name='.urlencode($row['name']).'"><div class="venueDiv">';
+        if (!empty($row['pic'])) {
+            echo '<img src="'.$row['pic'].'" class="venuePicSmall" />';
+        }
+        echo '<h3><a href="./venues.php?name='.urlencode($row['name']).'">'.$row['name'].'</a></h3>';
+        echo '<p class="venueDesc">';
+        if (strlen($row['desc']) > $descLength) {
+            echo substr($row['desc'],0,$descLength-7). '<a href="./venues.php?name='.urlencode($row[name]).'">...more</a>';
+        }else{
+            echo $row['desc'];
+        }
+        echo '</p></div></a>';
+    }
+    ?>
+        <div style="clear:both"></div>
+    </div>
+</div>

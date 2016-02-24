@@ -1,0 +1,40 @@
+<h2>Account Summary for <?php echo ucwords($_SESSION['name']); ?></h2>
+<a href="./password.php">Click Here to change your password</a><br /><br />
+<div class="accountEventsDiv">
+    <h3>Your Events</h3>
+    <table>
+        <?php
+        if ($events && $row = $events->fetch(PDO::FETCH_ASSOC)) {
+            echo '<th>Date</th><th>Title</th>';
+            do {
+                echo '<tr>';
+                echo '<td>'.$row['edate'].'</td>';
+                echo '<td><a href="./events.php?id='.$row['id'].'">'.$row['title'].' @ '.$row['venue'].'</a></td>';
+                echo '<td><a href="./editevent.php?id='.$row['id'].'">Edit</a></td>';
+                echo '<td><a href="./removeevent.php?id='.$row['id'].'">Remove</a></td>';
+            }while ($row = $events->fetch(PDO::FETCH_ASSOC));
+        }else{
+            echo '<tr><i>You don\'t have any events</i></tr>';
+        }
+        ?>
+    </table>
+    <a href="./addevent.php">Add a New Event</a>
+</div>
+<div class="accountProfileDiv">
+    <h3>Musician Profile</h3>
+    <ul>
+    <?php
+    if (!empty($_SESSION['hasProfile'])) {
+        echo '<li><a href="./profiles.php?name='.urlencode($_SESSION['name']).'">
+        Click Here to view your profile page</a></li>';
+        echo '<li><a href="./editprofile.php?id='.$_SESSION['id'].'">
+        Click Here to edit your profile page</a></li>';
+        echo '<li><a href="./removeprofile.php?id='.$_SESSION['id'].'">
+        Click Here to delete your profile page</a></li>';
+    }else{
+        echo '<li><i>You don\'t have a profile page.</i></li>';
+        echo '<li><a href="./addprofile.php">Click Here to create your profile.</a></li>';
+    }
+    ?>
+    </ul>
+</div>

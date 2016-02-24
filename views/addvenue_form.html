@@ -1,0 +1,41 @@
+<h2>Add Venue</h2>
+Fill out the form below to add a venue to the database.<br /><br />
+<div id="eventForm">
+<form action="./addvenue.php" method="post" enctype="multipart/form-data">
+    <?php
+    //name input
+    createInput('name', 'text', $venue_errors, 'Name: ');
+    echo '<br />';
+    //desc input
+    createInput('desc', 'textarea', $venue_errors, 'Description (Optional): ');
+    echo '<br />';
+    //pic input
+    echo '<label for="pic">Upload An Image (Optional): </label>';
+    if (array_key_exists('pic', $venue_errors)) {
+        echo '<span class="error">' . $venue_errors['pic'] . '</span><br>';
+    }
+    echo '<input type="file" name="pic" id="pic" />';
+    if (isset($_SESSION['profpicname'])) {
+        echo "<br />Currently '{$_SESSION['profpicname']}'";
+    }
+    echo '<br /><br />';
+    //links input
+    echo 'Additional Links (Optional): ';
+    echo '<div id="linksDiv">';
+    //create an entry for all sticky items
+    $posted = isset($_POST['links']); //true if values are present in post.
+    for ($i=0; $i<($posted?count($_POST['links']):1); $i++) {
+        echo '<div class="memberDiv">';
+        createInput('links['.$i.']', 'text', $venue_errors, 'URL: ', null, array('value'=>($posted?$_POST['links'][$i]:'')));
+        createInput('title['.$i.']', 'text', $venue_errors, 'Short Description: ', null, array('value'=>($posted?$_POST['title'][$i]:'')));
+        echo '<button class="linkDel" type="button">Remove</button>';
+        echo '</div>';
+    }
+    echo '</div>';
+    echo '<button id="addLink" type="button">Add Another Link</button>';
+    echo '<br /><br />';
+    ?>
+    <input type="submit" value="Submit" />
+    </form>
+</div>
+<script type="application/javascript" src="./js/addprofile.js"></script>

@@ -1,0 +1,31 @@
+    <h2>Musician Profiles</h2>
+    <?php
+    if (!empty($_SESSION['hasProfile'])) {
+        echo '<a href="./editprofile.php?id='.$_SESSION['id'].'">Click here to edit your profile</a><br/>';
+        echo '<a href="./removeprofile.php?id='.$_SESSION['id'].'">Click here to delete your profile</a><br/><br/>';
+    }else if (isset($_SESSION['id'])) {
+        echo '<a href="./addprofile.php">Click here to create your profile page!</a><br /><br />';
+    }
+    ?>
+    Click on a name to view that person's profile page and see their upcoming shows.
+    <div id="eventDisplayDiv">
+        <?php
+        foreach ($rows as $instr=>$row) {
+            echo '<div class="eventDivWrapper">';
+            echo '<div class="eventDiv">';
+            echo '<h3>'.ucwords($instr).'</h3>';
+            echo '<ul class="instrList">';
+            foreach ($row as $r) {
+                echo '<li>';
+                echo '<a href="./profiles.php?name='.urlencode($r['name']).'">';
+                echo ucwords($r['name']);
+                echo '</a>';
+                echo '</li>';
+            }
+            echo '</ul>';
+            echo '</div>';
+            echo '</div>';
+        }
+        ?>
+    </div>
+</div>

@@ -1,0 +1,24 @@
+<h2>Register a New Account</h2>
+Fill out the form below to create an account. You'll need to enter a valid email address. <br /> <br />
+<div id="registerForm">
+    <form action="./register.php" method="post">
+ <?php
+        
+        createInput('first', 'text', $reg_errors, 'First Name: ');
+        echo '<br />';
+        createInput('last', 'text', $reg_errors, 'Last Name: ');
+        echo '<br />';
+        createInput('email', 'text', $reg_errors, 'Email Address: ');
+        echo '<br />';
+        createInput('pass1', 'password', $reg_errors, 'Password: ');
+        echo '<br />';
+        createInput('pass2', 'password', $reg_errors, 'Confirm Password: ');
+                echo '<br />';
+
+        echo '<i>Your password must be at least 6 characters long and it must contain at least one lower-case letter, upper-case letter, and number.</i>';
+
+?>
+        <br /><br />
+        <input type="submit" value="Submit" />
+</form>
+</div>

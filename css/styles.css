@@ -1,0 +1,489 @@
+/*Font for title:
+  Playfair Display
+  Font for everything else:
+  Raleway
+*/
+
+html, button, input {
+    font-family: "Raleway", Arial, sans-serif;
+}
+
+#outerBorder {
+    max-width: 900px;
+    position: relative;
+    display: block;
+    background-color: #a3a3a3;
+    margin-left: auto;
+    margin-right: auto;
+    border: 10px solid #a3a3a3;
+    border-radius: 17px;
+    margin-top: 40px;
+    box-shadow: 8px 8px 10px #C4C4C4;
+}
+#contentDiv {
+    position: static;
+    background-color: #f6f6f6;
+    border-radius: 10px;
+    padding: 10px;
+    padding-top: 12px;
+}
+#footerDiv {
+    max-width: 900px;
+    position: relative;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 25px;
+    margin-bottom: 15px;
+    text-align: center;
+    font-size: small;
+    font-style: italic;
+}
+#titleDiv {
+    font-family: sans-serif;
+    float: left;
+    margin-left: 20px;
+    text-align: center;
+    margin-bottom: 14px;
+}
+#titleDiv > h1 {
+    margin: 0;
+    padding: 0;
+    font-family: "Playfair Display", Impact, Charcoal, sans-serif;
+    font-size: 40pt;
+    line-height: 1;
+    color: #3b3b3b;
+    float: left;
+}
+#navbar-container {
+    clear: both;
+    background-color: #cc4545;
+    margin-left: 3px;
+    margin-right: 3px;
+    min-height: 30px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+#navbar-container > ul {
+    margin: 0;
+    padding: 0;
+}
+
+#nav > li {
+    list-style-type: none;
+    display: table-cell;
+    width: 20%;
+    -moz-box-shadow: inset 1px 1px 1px rgba(255, 255, 255, .4), inset -1px -1px 1px rgba(0, 0, 0, .4);
+    -webkit-box-shadow: inset 1px 1px 1px rgba(255, 255, 255, .4), inset -1px -1px 1px rgba(0, 0, 0, .4);
+    box-shadow: inset 1px 1px 1px rgba(255, 255, 255, .2), inset -1px -1px 1px rgba(0, 0, 0, .3);
+}
+.nav-login {
+    display: none !important;
+}
+#nav a {
+    display: block;
+    height: 100%;
+    color: white;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-style: normal;
+    
+}
+#nav {
+    width: 100%;
+    display: table;
+    table-layout: fixed;
+    text-align: center;
+}
+
+#loginDiv {
+    background-color: #D3E1E6;
+    float: right;
+    
+    margin-right: 3px;
+    border: 1px solid #BFCACF;
+    padding: 3px;
+    text-align: right;
+    border-radius: 2px;
+}
+#loginDiv * {
+    margin: 1px;
+}
+.loginInput {
+    width: 150px;
+}
+#calendarDiv {
+    float:right;
+    text-align: center;
+    padding: 5px;
+    margin: 10px;
+    background-color: #96A4A8;
+    border-radius: 4px;
+    color: whitesmoke
+}
+#calendarHeading {
+    margin-left: 15px;
+    margin-right: 15px;
+    min-width: 80px;
+    display: inline-block;
+    font-weight: bold;
+}
+
+#calendarTable > tr > td {
+    width: 35px;
+}
+#calendarTable > tr > td > a {
+    display: block;
+    width: 100%;
+}
+.calendarInput {
+    vertical-align: top;
+    margin-left: 10px;
+}
+.tablecell-day {
+    background-color: #D9D0C3;
+    border: 2px solid transparent;
+}
+.tablecell-today {
+    background-color: #D9C3D7;
+}
+.tablecell-selected {
+    border: 2px solid #FFCB2E;
+}
+.eventDivWrapper {
+    width: 33.3%;
+    display: inline-block;
+    vertical-align: text-top;
+    /*margin-top: 4px;*/
+}
+.eventDiv {
+    margin: 2px;
+    padding: 5px;
+    text-align: left;
+    background-color: #B4C8ED;
+    border-radius: 5px;
+    height: 100%;
+    box-sizing: border-box;
+}
+.eventDiv h2 {
+    text-align: center;
+}
+.eventContent ul {
+    padding: 0;
+    position: relative;
+}
+.eventContent li:not(:last-child) {
+    border-bottom: 1px solid black;
+    padding-bottom: 8px;
+    margin-bottom: 8px;
+}
+.eventContent li {
+    display: block;
+    list-style-type: none;
+    padding-left: 40px;
+}
+.eventContent li::before {
+    display: block;
+    width: 20px;
+    position: absolute;
+    left: 15px;
+    content: "\25CF";
+}
+.eventDivOdd {
+    background-color: #C7D0ED;
+}
+.eventDivNow {
+    background-color: #d9c3d7;
+}
+#eventDisplayDiv {
+    display: block;
+    /*
+    display: flex;
+    display: -webkit-flex;
+    flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;*/
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 11px;
+    margin-bottom: 11px;
+}
+#menuToggle {
+    display: none;
+}
+.menuVisibility {
+    display: table;
+}
+.displayControlDiv {
+    text-align: center;
+    margin-top: 10px;
+    clear: both;
+}
+.error {
+    border: 1px solid red;
+}
+.error:not(input):not(textarea) {
+    color: red;
+    margin-right: 5px;
+}
+#registerForm {
+    border: 1px solid lightgrey;
+    margin: 5px;
+    padding: 5px;
+}
+#registerForm input {
+    display: block;
+    margin-left: 20px;
+}
+#registerForm .formEleDiv {
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+#eventForm {
+    border: 1px solid lightgrey;
+    margin: 5px;
+    padding: 5px;
+}
+#eventForm input, textarea {
+    margin: 5px;
+}
+.formEleDiv {
+    display: inline-block;
+    word-break: keep-all;
+}
+.formEleDivText {
+    margin-right: 10px;
+}
+textarea {
+    resize: none;
+    width: 75%;
+    height: 80px;
+    box-sizing: border-box;
+}
+#bandDiv {
+    border: 1px solid lightgrey;
+    padding: 5px;
+    margin: 5px;
+    display: table;
+}
+#linksDiv {
+    border: 1px solid lightgrey;
+    padding: 5px;
+    margin: 5px;
+    display: table;
+}
+.eventDetails {
+    font-style: italic;
+    font-size: small;
+}
+.eventViewList > li:nth-child(even) {
+    background-color: #B4C8ED;
+}
+.eventViewList > li:nth-child(odd) {
+    background-color: #C7D0ED;
+}
+.eventViewList > li {
+    padding: 4px;
+    border-radius: 5px;
+    margin-bottom: 2px;
+}
+.centeredDiv {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid lightgrey;
+    text-align: center;
+    max-width: 700px;
+    padding: 10px;
+}
+#cancelButton {
+    margin-left: 15px;
+    margin-top: 20px;
+}
+.profileViewList {
+    background-color: #e4edf0;
+    border: 1px solid #bfcacf;
+    border-radius: 2px;
+    padding: 6px;
+}
+.profileViewList dt {
+    font-weight: 600;
+}
+.profileViewList dd {
+    background-color: #F0F4F5;
+    display: inline-block;
+    min-width: 30%;
+    padding: 3px 9px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    border: 1px solid #d8dbdc;
+    border-radius: 5px;
+}
+.profilePic, .venueViewPic {
+    max-width: 100%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border: 6px solid lightgrey;
+    border-radius: 6px;
+}
+.profileViewDiv h2 {
+    text-align: center;
+}
+.profileInstrWrapper {
+    display: inline-block;
+    width: 33.33%;
+}
+.venuePicSmall {
+    max-width: 200px;
+    max-height: 200px;
+    width: auto;
+    height: auto;
+    display: block;
+    float: left;
+    border: 6px solid lightgrey;
+    border-radius: 6px;
+    margin-right: 10px;
+}
+.venueDiv {
+    clear: both;
+    background-color: #e4edf0;
+    border: 1px solid #bfcacf;
+    border-radius: 2px;
+    padding: 6px;
+    display: inline-block;
+    box-sizing: padding-box;
+    margin-bottom: 10px;
+}
+#venuesDiv {
+    display: flex;
+    flex-direction: column;
+}
+.venueViewDesc {
+    margin-top: 10px;
+}
+.accountEventsDiv {
+    background-color: #e4edf0;
+    border: 1px solid #bfcacf;
+    border-radius: 2px;
+    padding: 6px;
+    display: inline-block;
+    vertical-align: top;
+    margin: 5px;
+}
+.accountEventsDiv td {
+    padding: 5px;
+}
+.accountEventsDiv tr {
+    background-color: #F0F4F5;
+    border: 1px solid #d8dbdc;
+    border-radius: 5px;
+}
+.accountProfileDiv {
+    background-color: #e4edf0;
+    border: 1px solid #bfcacf;
+    border-radius: 2px;
+    padding: 6px;
+    display: inline-block;
+    vertical-align: top;
+    margin: 5px;
+}
+.accountProfileDiv ul {
+    background-color: #F0F4F5;
+    border: 1px solid #d8dbdc;
+    border-radius: 5px;
+}
+.accountProfileDiv li {
+    margin-top: 6px;
+    margin-bottom: 6px;
+    margin-right: 6px;
+}
+#autoNameDiv {
+    background-color: whitesmoke;
+    border: 1px solid grey;
+    padding: 3px;
+}
+.autoNameSpan {
+    display: block;
+}
+.autoNameSpanSel {
+    background-color: #9CE8FF;
+}
+.fb-like {
+    margin-left: 6%;
+    height: 20px;
+}
+.fb-share-button {
+    line-height: 20px;
+    margin-left: 10px;
+}
+
+/*for mobile*/
+@media all and (max-width: 850px) and  (min-width: 631px) {
+    .eventDivWrapper {
+        width: 50%;
+    }
+}
+@media all and (max-width: 630px) {
+    body {
+        margin: 0px;
+    }
+    #outerBorder {
+        border: none;
+        margin: 0;
+        box-shadow: none;
+        border-radius: 0px;
+    }
+    #contentDiv {
+        margin: 0;
+        border-radius: 0px;
+    }
+    #titleDiv {
+        float: none;
+        display: table;
+        min-width: 300px;
+        margin: 0 auto;
+        margin-bottom: 14px;
+    }
+    .nav-login {
+        display: block!important;
+    }
+    #loginDiv {
+        display: none;
+    }
+    #nav > li {
+        width: 100%;
+        display: block;
+    }
+    #nav {
+        text-align: center;
+    }
+    #menuToggle {
+        display: block;
+        text-align: center;
+        font-size: 25px;
+        font-family: sans-serif;
+        color: whitesmoke;
+    }
+    .menuVisibility {
+        display: none !important;
+    }
+    #calendarDiv {
+        display: none;
+    }
+    .eventDivWrapper {
+        width: 100%;
+    }
+    .calendarInput {
+        display: none;
+    }
+    .memberDiv {
+        border: 1px solid lightgrey;
+    }
+    textarea {
+        width: 100%;
+    }
+    .profileViewList dd {
+        display: block;
+    }
+}

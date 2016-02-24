@@ -1,0 +1,65 @@
+<div id="fb-root"></div>
+<script>(function(d, s, id) { //facebook sharing
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<?php
+if (isset($_SESSION['id']) && ($_SESSION['id'] === $row['user_id'] || $_SESSION['isAdmin'])) {
+    echo '<a href="./editprofile.php?id='.$row['user_id'].'">Click here to edit profile</a><br/>';
+    echo '<a href="./removeprofile.php?id='.$row['user_id'].'">Click here to remove profile</a><br/><br/>';
+}
+echo '<div class="profileViewDiv">';
+ //display the picture
+if (!empty($row['pic'])) {
+    echo '<img src="'.$row['pic'].'" alt="" class="profilePic" />';
+} ?>
+<h2><?php echo $row['name']; ?></h2>
+
+    <dl class="profileViewList">
+        <dt>Primary Instrument:</dt>
+        <dd><?php echo ucwords($row['instr_name']); ?></dd>
+        <?php if (!empty($row['bio'])) { ?>
+        <dt>Bio:</dt>
+        <dd><?php echo nl2br($row['bio']); ?></dd>
+        <?php } ?>
+        <?php if (!empty($linkURL)) { ?>
+        <dt>Additional Links:</dt>
+            <?php
+    //display the links
+            echo '<dd>';
+            foreach ($linkURL as $i=>$link) {
+                if ($i !== 0) echo '<br />';
+                echo $linkDesc[$i].' - '.'<a href="'.$link.'" target="_blank">'.substr($link, strpos($link, '/')+2).'</a>';
+            }
+            echo '</dd>';
+        }
+        ?>
+    </dl>
+    <h3>Upcoming Shows</h3>
+    <ul class="profileEventsList">
+        <?php
+        if (empty($events)) { //no shows
+            echo '<li><i>This person currently has no upcoming shows.</i></li>';
+        }else{ //list shows by date
+            foreach ($events as $date=>$array) {
+                echo '<li>'.$date;
+                echo '<ul>';
+                foreach ($array as $event) {
+                    echo '<li>';
+                    echo $event['time'] .': ';
+                    echo '<a href="./events.php?id='.$event['id'].'">';
+                    echo $event['title'].' @ '. $event['venue'];
+                    echo '</a></li>';
+                }
+                echo '</ul>';
+            }
+        }
+    ?>
+    </ul>
+        
+</div>
+<div class="fb-share-button" data-href="https://jazzinaustin.com<?php echo $_SERVER['REQUEST_URI']; ?>" data-layout="button"></div>

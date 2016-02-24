@@ -1,0 +1,68 @@
+<div id="fb-root"></div>
+<script>(function(d, s, id) { //facebook sharing
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+    <div class="venueViewDiv">
+        <h2><?php echo $row['name']; ?>
+            <div class="fb-share-button" data-href="https://jazzinaustin.com<?php echo $_SERVER['REQUEST_URI']; ?>" data-layout="button"></div>
+            </h2>
+        <?php //if user is admin, allow edit and remove links
+        if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] === true) {
+            echo '<a href="editvenue.php?id='.$row['id'].'">Click here to edit this venue page.</a><br />';
+            echo '<a href="removevenue.php?id='.$row['id'].'">Click here to delete this venue page.</a><br /><br />';
+        } 
+        //show image if exists
+        if (!empty($row['pic'])) {
+            echo '<img src="'.$row['pic'].'" class="venueViewPic" />';
+        }
+        //show description if exists
+        if (!empty($row['desc'])) {
+            echo '<div class="venueViewDesc">';
+            echo nl2br($row['desc']);
+            echo '</div>';
+        }
+        //show links
+            if (!empty($linkURL)) {
+                echo '<br />';
+                echo '<h3>Additional Links</h3>';
+                echo '<ul class="venueViewLinks">';
+                foreach ($linkURL as $url=>$desc) {
+                    echo '<li>';
+                    echo $desc. ' - ';
+                    echo '<a href="'.$url.'" target="_blank">'.substr($url, strpos($url, '/')+2).'</a>';
+                    echo '</li>';
+                }
+                echo '</ul>';
+            }
+        ?>
+    </div>
+    <div class="venueViewEventsDiv">
+        <h3>Upcoming Shows</h3>
+        <ul>
+        <?php
+        //display upcoming events associated with this venue
+        if (empty($events)) { //no shows
+            echo '<li><i>This venue currently has no upcoming shows.</i></li>';
+        }else{ //list shows by date
+            foreach ($events as $date=>$array) {
+                echo '<li>'.$date;
+                echo '<ul>';
+                foreach ($array as $event) {
+                    echo '<li>';
+                    echo $event['time'] .': ';
+                    echo '<a href="./events.php?id='.$event['id'].'">';
+                    echo $event['title'];
+                    echo '</a></li>';
+                }
+                echo '</ul></li>';
+            }
+        }
+        ?>
+        </ul>
+    </div>
+</div>
