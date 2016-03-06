@@ -179,6 +179,7 @@ window.addEventListener('load', function() {
         //draw the calendar on click
         var d = new Date();
         cals[i].addEventListener('click', function(e) {
+            if (document.querySelector("#calendarDiv")) { return; }
             drawCalendar(d.getFullYear(), d.getMonth(), this);
             e.stopPropagation();
         }); 
@@ -193,8 +194,8 @@ window.addEventListener('load', function() {
         //create containing div and position it.
         var div = document.createElement('div');
         div.style.position = 'absolute';
-        div.style.left = ele.offsetLeft -12 + 'px';
-        div.style.top = ele.offsetTop-28 +'px';
+        div.style.left = ele.scrollLeft -12 + 'px';
+        div.style.top = ele.scrollTop - 48 +'px';
         div.id = 'calendarDiv';
         //prev link
         var prev = document.createElement('a');
@@ -229,7 +230,7 @@ window.addEventListener('load', function() {
         next.innerHTML = '&#10095;';
         
         //don't allow prev to go into the past
-        if (currentMonth<month && year === currentYear)
+        if ((year > currentYear) || (currentMonth<month && year === currentYear))
             div.appendChild(prev);
         div.appendChild(calendarHeading);
         div.appendChild(next);
@@ -289,7 +290,7 @@ window.addEventListener('load', function() {
         ele.parentElement.appendChild(div);
         
         //shift to the left if over the edge of the contentDiv.
-        var contentDiv = document.getElementById('contentDiv');
+        var contentDiv = document.querySelector('.bodyDiv');
         if (div.getBoundingClientRect().right > contentDiv.getBoundingClientRect().right) {
             div.style.left = div.offsetLeft - (div.getBoundingClientRect().right - contentDiv.getBoundingClientRect().right) + 'px';
         }

@@ -1,13 +1,10 @@
 <script type="application/javascript" src="./js/addevent.js"></script>
 <span id="nameListJSON" style="display:none;"><?php echo isset($nameList)?$nameList:''; ?></span>
-<div class="bodyDiv">
+<div class="eventOptions">
     <h2>Add New Event</h2>
-    Fill out the form below to create a new event. You should only add events for gigs that are open
-     to the public.<br />
-    If you want to copy the details from one of your previously created events to this one, check the box
-     then select that event's name from the drop-down menu.
-    <br /><br />
-    Copy from a previous event: <input type="checkbox" id="copyCheck"> <select id="copySelect" value="none" disabled>
+    <p>Fill out the form below to create a new event. You should only add events for gigs that are open to the public.</p>
+    <p>If you want to copy the details from one of your previously created events to this one, check the box then select that event's name from the drop-down menu.</p>
+    <p>Copy from a previous event: <input type="checkbox" id="copyCheck"> <select id="copySelect" value="none" disabled>
     <option value="none" selected>Select Title</option>
     <?php
     //print an option for each event title.
@@ -15,21 +12,23 @@
         echo '<option value="'.$row['id'].'">'.$row['title'].'</option>';
     }
     ?>
-    </select>
-    <br /><br />
-    <div id="eventForm">
+    </select></p>
+</div>
+<div id="eventForm">
     <form action="./addevent.php" method="post">
         <?php
-
+        echo "<div class='eventFormDivider'>";
         createInput('title', 'text', $event_errors, 'Title: ');
-        echo '<br />';
-        
+        echo "</div>";
+        echo "<div class='eventFormDivider'>";
         createInput('venue', 'text', $event_errors, 'Venue: ');
-        echo '<br />';
-        
+        echo "</div>";
+
+        echo "<div class='eventFormDivider'>";
         createInput('date', 'date', $event_errors, 'Date (MM/DD/YY): ', 'POST', array('size'=>8));
-        echo '<br />';
-        
+        echo "</div>";
+
+        echo "<div class='eventFormDivider'>";
         createInput('startHour', 'text', $event_errors, 'Start Time: ', null, array('size'=>2,'maxlength'=>2, 'value'=>isset($_POST['startHour'])?$_POST['startHour']:6));
         echo ':';
         createInput('startMin', 'text', $event_errors, '', null, array('size'=>2,'maxlength'=>2,'value'=>isset($_POST['startMin'])?$_POST['startMin']:'00'));
@@ -39,20 +38,21 @@
         }else{
             echo '<select name="startPeriod" id="startPeriod"><option value="am">AM</option><option value="pm" selected>PM</option></select>';
         }
-        echo '<br />';
-        
+        echo "</div>";
+
+        echo "<div class='eventFormDivider'>";
         createInput('endHour', 'text', $event_errors, 'End Time: ', null, array('size'=>2,'maxlength'=>2,'value'=>isset($_POST['endHour'])?$_POST['endHour']:8));
         echo ':';
+
         createInput('endMin', 'text', $event_errors, '', null, array('size'=>2,'maxlength'=>2,'value'=>isset($_POST['endMin'])?$_POST['endMin']:'00'));
         if (isset($_POST['endPeriod'])) {
             echo '<select name="endPeriod" id="endPeriod"><option value="am">AM</option><option value="pm" '.($_POST['endPeriod']==='pm'?'selected':'').'>PM</option></select>';
         }else{
             echo '<select name="endPeriod" id="endPeriod"><option value="am">AM</option><option value="pm" selected>PM</option></select>';
         }
-        echo '<br />';
-        
+        echo "</div>";
+
         createInput('desc', 'textarea', $event_errors, 'Description (Optional): ');
-        echo '<br />';
         
         echo 'Band Members (Optional): ';
         echo '<div id="bandDiv">';
@@ -74,9 +74,7 @@
         }
         echo '</div>';
         echo '<button id="addMember" type="button">Add Band Member</button>';
-        echo '<br /><br />';
         echo '<input type="submit" value="Submit">';
     ?>
-        </form>
-    </div>
+    </form>
 </div>

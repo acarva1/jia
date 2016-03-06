@@ -21,10 +21,9 @@
     </title>
     <link href='https://fonts.googleapis.com/css?family=Raleway:400,800' rel='stylesheet' type='text/css' />
     <link rel="stylesheet" type="text/css" href="./css/normalize.css" media="all"/>
-    <link rel="stylesheet" type="text/css" href="./css/styles2.css?
-        <?php echo filemtime('./css/styles2.css');?>
-    " media="all" />
+    <link rel="stylesheet" type="text/css" href="./css/styles.css?<?php echo filemtime('./css/styles.css');?>" media="all" />
     <script type="application/javascript" src="./js/menu.js"></script>
+
 </head> 
 <body>
     <div class="outerBorder">
@@ -44,20 +43,14 @@
                     <form action="" method="post">
                         <div class="email">
                             <label for="email">Email: </label>
-                            <input type="text" id="email" class="loginInput" name="login[email]" value="
-                            <?php 
-                                if (isset($loginEmail)) {
-                                    echo $loginEmail
-                                ;} 
-                            ?>
-                            "/>
+                            <input type="text" id="email" class="loginInput" name="login[email]" value="<?php if (isset($loginEmail)) {echo $loginEmail;} ?>"/>
                         </div>
                         <div class="password">
                             <label for="password">Password: </label>
                             <input type="password" id="password" class="loginInput" name="login[pass]"/>
                             <?php 
                                 if (isset($loginError) && $loginError === true) {
-                                    echo '<span class="error">Invalid Email or Password</span><br />';
+                                    echo '<span class="error">Invalid Email or Password</span>';
                                 } 
                             ?>
                         </div>
@@ -73,7 +66,7 @@
                     <?php
                         }
                         else { 
-                        echo '<span>Welcome, ' . $_SESSION['name'] . '!</span>'; 
+                        echo '<span class="userWelcome">Welcome, ' . $_SESSION['name'] . '!</span>'; 
                     ?>
                     <div class="memberControls">
                         <a href="myaccount.php">My Account</a> | 
@@ -83,15 +76,6 @@
                     <?php
                         } 
                     ?>
-                    <script>(function(d, s, id) { //facebook like button
-                      var js, fjs = d.getElementsByTagName(s)[0];
-                      if (d.getElementById(id)) return;
-                      js = d.createElement(s); js.id = id;
-                      js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5";
-                      fjs.parentNode.insertBefore(js, fjs);
-                    }(document, 'script', 'facebook-jssdk'));</script>
-                <!--FACEBOOK-->
-                <div class="fb-like" data-href="http://jazzinaustin.com" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
                 </div>
             </div>
             <div class="navbar-container userAction padToView">
@@ -105,13 +89,13 @@
                     //check if user is logged in
                     if (isset($_SESSION['id']) && filter_var($_SESSION['id'], FILTER_VALIDATE_INT, array('min_range'=>1))) {
                         ?>
-                    <li><a href="addevent.php">Add Event</a></li>
                     <li class="nav-login"><a href="myaccount.php">My Account</a></li>
                     <?php
                     }else{ ?>
                     <li class="nav-login"><a href="login.php">Login</a></li>
                     <li><a href="register.php">Register</a></li>
                     <?php } ?>
+                    <li><a href="addevent.php">Add Event</a></li>
                 </ul>
             </div>
         <?php

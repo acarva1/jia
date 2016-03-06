@@ -53,7 +53,7 @@ function createInput($name, $type, $errors = array(), $label, $values = 'POST', 
         
     }else if ($type === 'textarea') { //text area
         // Display the error first: 
-		if (array_key_exists($name, $errors)) echo ' <span class="error">' . $errors[$name] . '</span><br />';
+		if (array_key_exists($name, $errors)) echo ' <span class="error">' . $errors[$name] . '</span>';
         echo '<span>'.$label.'</span><br />';
 		// Start creating the textarea:
 		echo '<textarea name="' . $name . '" id="' . $name . '"';

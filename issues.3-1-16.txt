@@ -1,0 +1,43 @@
+-------------------------Remaining bugs-------------------------
+Cannot log-in from the forgot password page
+Logging in from the Register page triggers "already have an account" message
+	Possible fix: logging in from specific pages automatically navigates to home page?
+
+---------------------List of files modified---------------------
+******/includes******
+header.html		added normalize.css stylesheet
+			line 77, added userWelcome class to span
+footer.html
+form_hunctions.inc.php	removed <br /> tags as formatting after elements
+******/views******
+calendar.html
+myaccount.html		added changePassword class to anchor, removed <br> tags after change password anchor
+addevent_form.html	removed <div class="bodyDiv">...</div> wrapper from document
+				bug: additional bodyDiv wrapper
+register_form.html	removed "echo <br />" after createInput's
+			changed <i>...</i> to <span class="passwordHint">...</span>
+			removed <br /><br />
+addevent_form.html	added <div class="eventOptions">...</div>
+			added <div class="eventFormDivider">...</div> to createInputs
+profiles.html
+event_view.html
+booking_form.html
+venue_view.html
+venues.html
+
+******/js******
+menu.js 		line 2, changed document.getElementById to document.querySelector('.nav')
+addEvent.js		line 182: added if... statement to catch and ignore repeated clicks on the calendar button when the calendar is already open
+				bug: clicking on the calendarInput button while the calendar is already open creates another calendar element
+			line 233: changed if statement
+				bug: when navigating to next year, the prev arrow disappears for months earlier than the present month
+			line 292: changed contentDiv assignment to document.querySelector(".bodyDiv")
+				refactor: #contentDiv changed to .bodyDiv
+
+login.php		added divs to separate login components, added loginSuccess class to span (line 33)
+register.php		line 55: fixed typo (extra "n" in "don\'nt")
+
+--------------------------Files that need attention--------------------------
+header.html
+login.php
+views\event_view.html

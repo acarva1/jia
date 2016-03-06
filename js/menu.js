@@ -1,5 +1,5 @@
 window.addEventListener('load', function() {
-    var nav = document.getElementById('nav');
+    var nav = document.querySelector('.nav');
     var toggle = document.getElementById('menuToggle');
     toggle.onclick = function() {
         if (nav.classList.contains('menuVisibility')) {
