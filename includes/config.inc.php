@@ -11,8 +11,8 @@ if (in_array($host, array('local', '127.0', '192.1'))) { //determine if host is 
 define('CONTACT_EMAIL', 'aaronallen8455@gmail.com');
 
 if($local) {
-    define('BASE_URI', 'file:///C:/xampp/htdocs/jia');
-    define('BASE_URL', 'localhost/jia/');
+    define('BASE_URI', 'file:///C:/xampp/htdocs/jia-master');
+    define('BASE_URL', 'localhost/jia-master/');
     define('MYSQL', BASE_URI . '/includes/mysql.inc.php');
 }else{//live
     define('BASE_URI', 'home/pronzneu/www/jazzinaustin.com');

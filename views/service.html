@@ -1,0 +1,126 @@
+<h2>Embed Your Calendar</h2>
+
+To display your Jazz in Austin events on your personal website, follow these steps:
+<ol>
+    <li>Customize the appearance of your event list to match your website.</li>
+    <li>Select and copy all of the generated code.</li>
+    <li>Paste the code into your website's HTML where you'd like the list to appear.</li>
+</ol>
+<br />
+<table id="serviceUITable">
+    <tr>
+        <td align="right">Font Style: </td>
+        <td>
+            <select id="font">
+                <optgroup label="Serif">
+                <option value="Georgia, serif">Georgia</option>
+                <option value='"Palatino Linotype", "Book Antiqua", Palatino, serif'>Palatino</option>
+                <option value='"Times New Roman", Times, serif' selected>Times New Roman</option>
+                </optgroup>
+                <optgroup label="Sans-Serif">
+                <option value='Arial, Helvetica, sans-serif'>Arial</option>
+                <option value='"Arial Black", Gadget, sans-serif'>Arial Black</option>
+                <option value='"Comic Sans MS", cursive, sans-serif'>Comic Sans</option>
+                <option value='Impact, Charcoal, sans-serif'>Impact</option>
+                <option value='"Lucida Sans Unicode", "Lucida Grande", sans-serif'>Lucida</option>
+                <option value='Tahoma, Geneva, sans-serif'>Tahoma</option>
+                    <option value='"Trebuchet MS", Helvetica, sans-serif'>Trebuchet</option>
+                    <option value='Verdana, Geneva, sans-serif'>Veranda</option>
+                </optgroup>
+                <optgroup label="Monospace">
+                    <option value='"Courier New", Courier, monospace'>Courier New</option>
+                    <option value='"Lucida Console", Monaco, monospace'>Lucida Console</option>
+                </optgroup>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td align="right">Text Color: </td>
+        <td><input type="color" id="color" value="#000000"/>
+            <input type="text" id="colorhex" size="7" />
+        </td>
+    </tr>
+    <tr>
+        <td align="right">Link Color: </td>
+        <td><input type="color" id="link" value="#0000EE"/>
+            <input type="text" id="linkhex" size="7" />
+        </td>
+    </tr>
+    <tr>
+        <td align="right">No Background: </td>
+        <td><input type="checkbox" id="nobg" checked /></td>
+    </tr>
+    <tr>
+        <td align="right">Background Color: </td>
+        <td><input type="color" id="bg" value="#FFFFFF" disabled />
+            <input type="text" id="bghex" size="7" disabled />
+        </td>
+    </tr>
+    
+    <tr>
+        <td align="right">HTML Code: </td>
+        <td>
+            <textarea id="serviceCode" spellcheck="false"></textarea>
+        </td>
+    </tr>
+</table>
+<fieldset id="serviceUIPreview">
+    <legend>Preview</legend>
+    <style type="text/css">
+        h2 {
+            font-size: 2em;
+        }
+        ul {
+            list-style-type: none;
+            padding-left: 10px;
+        }
+        li.date {
+            font-weight: bold;
+            font-size: 1.5em;
+        }
+        li.event {
+            font-weight: 500;
+            margin-top: 7px;
+            font-size: .7em;
+        }
+        li.date:not(:last-child) {
+            margin-bottom: 15px;
+        }
+        #preview {
+            padding: 5px;
+        }
+    </style>
+    <div id="preview">
+        <h2>My Upcoming Shows</h2>
+        <ul>
+            <li class="date"><u><?php echo date('F jS, Y'); ?></u>
+                <ul>
+                    <li class="event">
+                        6:00pm - 8:00pm: <span class="previewLink">Event Name @ Venue</span>
+                    </li>
+                </ul>
+            </li>
+            <li class="date"><u><?php echo date('F jS, Y', strtotime('+1 week')); ?></u>
+                <ul>
+                    <li class="event">
+                        2:00pm - 5:00pm: <span class="previewLink">Event Name @ Venue</span>
+                    </li>
+                    <li class="event">
+                        9:30pm - 1:30am: <span class="previewLink">Event Name @ Venue</span>
+                    </li>
+                </ul>
+            </li>
+            <li class="date"><u><?php echo date('F jS, Y', strtotime('+12 day')); ?></u>
+                <ul>
+                    <li class="event">
+                        6:00pm - 8:00pm: <span class="previewLink">Event Name @ Venue</span>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</fieldset>
+<input type="hidden" value="<?php echo $_SESSION['id']; ?>" id="uid">
+<script type="application/javascript" src="./js/service.js"></script>
+
+

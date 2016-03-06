@@ -27,6 +27,7 @@ a {
     background: #222;
 }
 .bodyDiv {
+    min-height: 100vh;
     background-color: white;
     margin-top: 0;
     margin-bottom: 20px;
